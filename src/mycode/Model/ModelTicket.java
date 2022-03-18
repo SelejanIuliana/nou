@@ -3,27 +3,25 @@ package mycode.Model;
 public class ModelTicket {
     private int id;
     private int ticket_id;
-    private int price;
-    private int quantity;
-    public ModelTicket(int id, int ticket_id, int price,int quantity){
+    private  int idReservetion;
+    public ModelTicket(int id, int ticket_id, int idReservetion){
         this.id=id;
         this.ticket_id=ticket_id;
-        this.price=price;
-        this.quantity=quantity;
+        this.idReservetion=id;
+
     }
     public ModelTicket(String propietati){
         String[] line=propietati.split(",");
         this.id=Integer.parseInt(line[0]);
         this.ticket_id=Integer.parseInt(line[1]);;
-        this.price=Integer.parseInt(line[2]);
-        this.quantity=Integer.parseInt(line[3]);
+        this.idReservetion=Integer.parseInt(line[2]);
+
     }
     public String description(){
         String text="";
         text+="Id-ul este " + this.id +"\n";
         text+="Id-ul ticketului este " + this.ticket_id+ "\n";
-        text+="Id-ul pretului este " + this.price+"\n";
-        text+="Nr biletelor este " + this.quantity+"\n";
+        text+="Nr rezervari este " + this.idReservetion+"\n";
         return text;
 
     }
@@ -40,17 +38,16 @@ public class ModelTicket {
         this.ticket_id=ticket_id;
     }
 
-    public int getPrice(){
-        return this.price;
+    public int getIdReservetion(){
+        return this.idReservetion;
     }
-    public void setPrice(int price){
-        this.price=price;
+    public void setIdReservetion(int idReservetion){
+        this.idReservetion=idReservetion;
     }
-    public int getQuantity(){return this.quantity;}
-    public void setQuantity(int quantity){this.quantity=quantity;}
+
     public String save(){
         String text="";
-        text+=this.id+","+this.ticket_id+","+ this.price+","+this.quantity;
+        text+=this.id+","+this.ticket_id+","+this.idReservetion;
         return text;
     }
 }

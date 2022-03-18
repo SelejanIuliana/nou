@@ -37,9 +37,9 @@ class ControlReservetionTest {
 
     @Test
     public void testAdd() {
-        ModelReservetion reservetion = new ModelReservetion(1,22,33,55);
-        ModelReservetion reservetion2 = new ModelReservetion(2,33,44, 6);
-        ModelReservetion reservetion3= new ModelReservetion(3, 45,54,55);
+        ModelReservetion reservetion = new ModelReservetion(1,"Austria",2,3);
+        ModelReservetion reservetion2 = new ModelReservetion(2,"Germania",44, 6);
+        ModelReservetion reservetion3= new ModelReservetion(3, "Anglia",54,55);
         controlReservetion.addRezervare(reservetion);
         controlReservetion.addRezervare(reservetion3);
         controlReservetion.addRezervare(reservetion2);
@@ -49,44 +49,56 @@ class ControlReservetionTest {
     }
 
     @Test
-    public void updateBooking() {
-        ModelReservetion reservetion = new ModelReservetion(1,22,33,55);
-        ModelReservetion reservetion2 = new ModelReservetion(2,33,44, 6);
-        ModelReservetion reservetion3= new ModelReservetion(3, 45,54,55);
+    public void updateprice() {
+        ModelReservetion reservetion = new ModelReservetion(1,"Austria",2,3);
+        ModelReservetion reservetion2 = new ModelReservetion(2,"Germania",44, 6);
+        ModelReservetion reservetion3= new ModelReservetion(3, "Anglia",54,55);
         controlReservetion.addRezervare(reservetion);
         controlReservetion.addRezervare(reservetion3);
         controlReservetion.addRezervare(reservetion2);
-        controlReservetion.updateidBooking(1,3);
-        assertEquals(3, controlReservetion.getbyid(1).getIdbooking());
+        controlReservetion.updateiPrice(1,3);
+        assertEquals(3, controlReservetion.getbyid(1).getPrice());
+
+    }
+    @Test
+    public void updatequantity() {
+        ModelReservetion reservetion = new ModelReservetion(1,"Austria",2,3);
+        ModelReservetion reservetion2 = new ModelReservetion(2,"Germania",44, 6);
+        ModelReservetion reservetion3= new ModelReservetion(3, "Anglia",54,55);
+        controlReservetion.addRezervare(reservetion);
+        controlReservetion.addRezervare(reservetion3);
+        controlReservetion.addRezervare(reservetion2);
+        controlReservetion.updateQuantity(1,3);
+        assertEquals(3, controlReservetion.getbyid(1).getQuantity());
 
     }
 
 
 
     @Test
-    public void updateFullName() {
-        ModelReservetion reservetion = new ModelReservetion(1,22,33,55);
-        ModelReservetion reservetion2 = new ModelReservetion(2,33,44, 6);
-        ModelReservetion reservetion3= new ModelReservetion(3, 45,54,55);
+    public void updateName() {
+        ModelReservetion reservetion = new ModelReservetion(1,"Austria",2,3);
+        ModelReservetion reservetion2 = new ModelReservetion(2,"Germania",44, 6);
+        ModelReservetion reservetion3= new ModelReservetion(3, "Anglia",54,55);
         controlReservetion.addRezervare(reservetion);
         controlReservetion.addRezervare(reservetion3);
         controlReservetion.addRezervare(reservetion2);
         for(int i=1;i<4;i++){
             if (controlReservetion.getbyid(i).getIdreservetion()>=5 && controlReservetion.getbyid(i).getIdreservetion()<=200 ){
-                controlReservetion.updateName(i, 54352);
+                controlReservetion.updatenameDestination(i, "Suedia");
             }
         }
         for(int i=1;i<4;i++){
             if (controlReservetion.getbyid(i).getIdreservetion()>=5 && controlReservetion.getbyid(i).getIdreservetion()<=200 ){
-                assertEquals(54352,controlReservetion.getbyid(i).getIdreservetion());
+                assertEquals("Suedia",controlReservetion.getbyid(i).getNameDestination());
             }
         }
     }
 
     @Test
     public void testDelete(){
-        ModelReservetion reservetion3= new ModelReservetion(3, 45,54,55);
-        controlReservetion.addRezervare(reservetion3);
+        ModelReservetion reservetion = new ModelReservetion(1,"Austria",2,3);
+        controlReservetion.addRezervare(reservetion);
         controlReservetion.delete(1);
         assertEquals(null,controlReservetion.getbyid(1));
 
@@ -96,11 +108,11 @@ class ControlReservetionTest {
 
     @Test
     public void testtoSavedoi(){
-        ModelReservetion reservetion3= new ModelReservetion(3, 45,54,55);
-        controlReservetion.addRezervare(reservetion3);
+        ModelReservetion reservetion = new ModelReservetion(1,"Austria",2,3);
+        controlReservetion.addRezervare(reservetion);
         controlReservetion.save();
         controlReservetion.load();
-        assertEquals(45,controlReservetion.getbyid(3).getIdbooking());
+        assertEquals(1,controlReservetion.getbyid(1).getIdreservetion());
     }
 
 

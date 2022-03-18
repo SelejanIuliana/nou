@@ -2,6 +2,7 @@ package mycode.Controller;
 
 import mycode.Model.ModelPassanger;
 import mycode.Model.ModelReservetion;
+import mycode.Model.ModelTicket;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -44,17 +45,24 @@ public class ControlReservetion {
     public void addRezervare(ModelReservetion reservetion){
         this.reservetions.add(reservetion);
     }
-    public void updateidBooking(int id, int booking){
+    public void updateiPrice(int id, int price){
         for (int i=0;i<reservetions.size();i++){
             if(reservetions.get(i).getIdreservetion()==id){
-                reservetions.get(i).setIdbooking(booking);
+                reservetions.get(i).setPrice(price);
             }
         }
     }
-    public void updateName(int id, int name){
+    public void updatenameDestination(int id, String namedestination){
+        for (int i=0;i<reservetions.size();i++){
+            if(reservetions.get(i).getIdreservetion()==id){
+                reservetions.get(i).setNameDestination(namedestination);
+            }
+        }
+    }
+    public void updateQuantity(int id, int quantity){
         for (int i=0; i<reservetions.size();i++){
             if(reservetions.get(i).getIdreservetion()==id){
-                reservetions.get(i).setIdname(name);
+                reservetions.get(i).setQuantity(quantity);
             }
         }
     }
@@ -65,6 +73,15 @@ public class ControlReservetion {
             }
         }
     }
+    public ModelTicket gettipimprumut(int id){
+        for (ModelTicket m: reservetions){
+            if(m.getId()==id){
+                return m;
+            }
+        }
+        return null;
+    }
+
     public void delete(int id){
         for (int i=0;i<reservetions.size(); i++){
             if(reservetions.get(i).getIdreservetion()==id){
@@ -80,7 +97,14 @@ public class ControlReservetion {
             return this.reservetions.get(this.reservetions.size()-1).getIdreservetion()+1;
         }
     }
-
+    public boolean isNume(String nume){
+        for (int i=0; i<reservetions.size();i++){
+            if (reservetions.get(i).getNameDestination()==nume){
+                return true;
+            }
+        }
+        return false;
+    }
 
 
     public String toSave(){

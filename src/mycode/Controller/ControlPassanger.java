@@ -90,7 +90,14 @@ public class ControlPassanger {
         }
         return passangers;
     }
-
+    public boolean isNume(String nume){
+        for (int i=0; i<passangers.size();i++){
+            if (passangers.get(i).getFull_name().equals(nume)){
+                return true;
+            }
+        }
+        return false;
+    }
     public String toSave(){
         String text="";
         for (ModelPassanger n:passangers){

@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class ModelReservetionTest {
     @Test
     public void propietati(){
-        ModelReservetion modelReservetion=new ModelReservetion(1,22,33,45);
-        assertEquals("1,22,33,45",modelReservetion.save());
+        ModelReservetion modelReservetion=new ModelReservetion(1,"Austria",23,2);
+        assertEquals("1,Austria,23,2",modelReservetion.save());
     }
 }

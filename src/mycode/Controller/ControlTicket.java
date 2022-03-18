@@ -51,17 +51,11 @@ public class ControlTicket {
             }
         }
     }
-    public void updatePrice(int id, int price){
+
+    public void updateReservation(int id, int reserv){
         for (int i=0; i<tickets.size();i++){
             if(tickets.get(i).getId()==id){
-               tickets.get(i).setPrice(price);
-            }
-        }
-    }
-    public void updateQuantity(int id, int quantity){
-        for (int i=0; i<tickets.size();i++){
-            if(tickets.get(i).getId()==id){
-               tickets.get(i).setQuantity(quantity);
+               tickets.get(i).setIdReservetion(reserv);
             }
         }
     }
