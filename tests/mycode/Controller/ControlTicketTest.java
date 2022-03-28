@@ -38,9 +38,9 @@ class ControlTicketTest {
 
     @Test
     public void testAdd() {
-        ModelTicket ticket = new ModelTicket(1,2,3);
-        ModelTicket ticket2 = new ModelTicket(2,33,44 );
-        ModelTicket ticket1 = new ModelTicket(3, 45,44);
+        ModelTicket ticket = new ModelTicket(1,"Pro",23,34);
+        ModelTicket ticket2 = new ModelTicket(2,"Gold",33,44 );
+        ModelTicket ticket1 = new ModelTicket(3,"Premium", 45,44);
         controlTicketTest.addTicket(ticket);
         controlTicketTest.addTicket(ticket2);
         controlTicketTest.addTicket(ticket1);
@@ -50,15 +50,15 @@ class ControlTicketTest {
     }
 
     @Test
-    public void updateidTicket() {
-        ModelTicket ticket = new ModelTicket(1,2,3);
-        ModelTicket ticket2 = new ModelTicket(2,33,44 );
-        ModelTicket ticket1 = new ModelTicket(3, 45,44);
+    public void updateidPrice() {
+        ModelTicket ticket = new ModelTicket(1,"Pro",23,34);
+        ModelTicket ticket2 = new ModelTicket(2,"Gold",33,44 );
+        ModelTicket ticket1 = new ModelTicket(3,"Premium", 45,44);
         controlTicketTest.addTicket(ticket);
         controlTicketTest.addTicket(ticket2);
         controlTicketTest.addTicket(ticket1);
-        controlTicketTest.updateidTicket(1,3425);
-        assertEquals(3425, controlTicketTest.getbyid(1).getTicket_id());
+        controlTicketTest.updatePrice(1,3425);
+        assertEquals(3425, controlTicketTest.getbyid(1).getPrice());
 
     }
 
@@ -66,27 +66,27 @@ class ControlTicketTest {
 
     @Test
     public void updateRezervation() {
-        ModelTicket ticket = new ModelTicket(1,2,3);
-        ModelTicket ticket2 = new ModelTicket(2,33,44 );
-        ModelTicket ticket1 = new ModelTicket(3, 45,44);
+        ModelTicket ticket = new ModelTicket(1,"Pro",23,34);
+        ModelTicket ticket2 = new ModelTicket(2,"Gold",33,44 );
+        ModelTicket ticket1 = new ModelTicket(3,"Premium", 45,44);
         controlTicketTest.addTicket(ticket);
         controlTicketTest.addTicket(ticket2);
         controlTicketTest.addTicket(ticket1);
         for(int i=1;i<4;i++){
             if (controlTicketTest.getbyid(i).getId()>=5 && controlTicketTest.getbyid(i).getId()<=200 ){
-                controlTicketTest.updateReservation(i, 22);
+                controlTicketTest.updatePachet(i, 22);
             }
         }
         for(int i=1;i<4;i++){
             if (controlTicketTest.getbyid(i).getId()>=5 && controlTicketTest.getbyid(i).getId()<=200 ){
-                assertEquals(22,controlTicketTest.getbyid(i).getIdReservetion());
+                assertEquals(22,controlTicketTest.getbyid(i).getPacket());
             }
         }
     }
 
     @Test
     public void testDelete(){
-        ModelTicket ticket1 = new ModelTicket(3, 45,44);
+        ModelTicket ticket1 = new ModelTicket(3,"Premium", 45,44);
         controlTicketTest.addTicket(ticket1);
         controlTicketTest.delete(1);
         assertEquals(null,controlTicketTest.getbyid(1));
@@ -97,11 +97,11 @@ class ControlTicketTest {
 
     @Test
     public void testtoSavedoi(){
-        ModelTicket ticket1 = new ModelTicket(3, 45,44);
+        ModelTicket ticket1 = new ModelTicket(3,"Premium", 45,44);
         controlTicketTest.addTicket(ticket1);
         controlTicketTest.save();
         controlTicketTest.load();
-        assertEquals(3,controlTicketTest.getbyid(3).getIdReservetion());
+        assertEquals(3,controlTicketTest.getbyid(3).getId());
     }
 
 

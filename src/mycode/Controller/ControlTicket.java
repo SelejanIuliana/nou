@@ -44,18 +44,25 @@ public class ControlTicket {
     public void addTicket(ModelTicket ticket){
         this.tickets.add(ticket);
     }
-    public void updateidTicket(int id, int ticket){
+    public void updateName(int id, String name){
         for (int i=0;i<tickets.size();i++){
             if(tickets.get(i).getId()==id){
-                tickets.get(i).setTicket_id(ticket);
+                tickets.get(i).setName(name);
             }
         }
     }
 
-    public void updateReservation(int id, int reserv){
+    public void updatePachet(int id, int packet){
         for (int i=0; i<tickets.size();i++){
             if(tickets.get(i).getId()==id){
-               tickets.get(i).setIdReservetion(reserv);
+               tickets.get(i).setPacket(packet);
+            }
+        }
+    }
+    public void updatePrice(int id, int price){
+        for (int i=0; i<tickets.size();i++){
+            if(tickets.get(i).getId()==id){
+                tickets.get(i).setPrice(price);
             }
         }
     }
@@ -71,7 +78,7 @@ public class ControlTicket {
         if(this.tickets.size()==0){
             return 1;
         }else{
-            return this.tickets.get(this.tickets.size()-1).getTicket_id()+1;
+            return this.tickets.get(this.tickets.size()-1).getId()+1;
         }
     }
 

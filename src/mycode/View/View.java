@@ -21,7 +21,7 @@ public class View {
         this.controlTicket = new ControlTicket("C:\\Users\\Iulia\\Desktop\\WebDev\\TemeOOP\\Airlinee\\src\\mycode\\Resources\\ticket.txt");
         this.modelPassanger = new ModelPassanger(1, "alina@gamil.com", "anan", "Ana Mindrut");
 
-       // this.controlReservetion = new ModelTicket(this.controlTicket.nextValidId(), this.modelPassanger.getId(), 0);
+//        this.modelTicket = new ModelTicket(this.controlTicket.nextValidId(), this.modelPassanger.getId(), 0);
 
 
     }
@@ -45,7 +45,7 @@ public class View {
                     controlTicket.afisareTicket();
                     break;
                 case 2:
-                    addCos();
+                    //addCos();
                     break;
                 case 3:
 
@@ -54,15 +54,38 @@ public class View {
     }
 
 
-    public void addCos() {
-        System.out.println("Ce produs doriti sa adaugati");
-        String nume=scanner.nextLine();
-        if(controlReservetion.isNume(nume)==true ){
-            System.out.println("Destinatia dorita nu se mai afla in sistem");
+ /*   public void addCos() {
+        public void addCos() {
+            System.out.println("Care  este destinatia  dorita");
+            String nume = scanner.nextLine();
+            System.out.println("Cate pachete doriti sa adaugati");
+            int cantitate = Integer.parseInt(scanner.nextLine());
+            if (controlReservetion.isNume(nume) == true && controlReservetion.isStock(cantitate) == true) {
+                System.out.println("Nr de pachete nu este disponibil");
+
+                ModelReservetion p = this.controlReservetion.reservetions(nume);
 
 
+                p.setQuantity(p.getQuantity()-cantitate);
 
+
+                ModelTicket x = new ModelTicket(
+                        controlTicket.nextValidId(),
+                        this.modelTicket.getId(),
+                        p.getPrice() * cantitate,
+                        cantitate
+                );
+
+                this.order.setAmmount(order.getAmmount()+x.getPrice());
+                System.out.println(x.description());
+                this.controlTicket.addTicket(x);
+
+            }
         }
 
+
+
     }
+
+  */
 }

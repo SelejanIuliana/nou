@@ -1,6 +1,7 @@
 package mycode.Controller;
 
 import mycode.Model.ModelPassanger;
+import mycode.Model.ModelReservationOrder;
 import mycode.Model.ModelReservetion;
 import mycode.Model.ModelTicket;
 
@@ -39,44 +40,32 @@ public class ControlReservetion {
 
     public void afisareRezervare() {
         for (int i = 0; i < reservetions.size(); i++) {
-            System.out.println(reservetions.get(i).descrierezervare());
+            System.out.println(reservetions.get(i).description());
         }
     }
     public void addRezervare(ModelReservetion reservetion){
         this.reservetions.add(reservetion);
     }
-    public void updateiPrice(int id, int price){
+    public void updateiIdTicket(int id, int ticket){
         for (int i=0;i<reservetions.size();i++){
-            if(reservetions.get(i).getIdreservetion()==id){
-                reservetions.get(i).setPrice(price);
+            if(reservetions.get(i).getId()==id){
+                reservetions.get(i).setTicket_id(ticket);
             }
         }
     }
-    public void updatenameDestination(int id, String namedestination){
+    public void updateidrezer(int id, int idreser){
         for (int i=0;i<reservetions.size();i++){
-            if(reservetions.get(i).getIdreservetion()==id){
-                reservetions.get(i).setNameDestination(namedestination);
+            if(reservetions.get(i).getId()==id){
+                reservetions.get(i).setIdReservetion(idreser);
             }
         }
     }
-    public void updateQuantity(int id, int quantity){
+
+
+    public ModelReservetion getbyidreservation(int id){
         for (int i=0; i<reservetions.size();i++){
-            if(reservetions.get(i).getIdreservetion()==id){
-                reservetions.get(i).setQuantity(quantity);
-            }
-        }
-    }
-    public void updateTicket(int id, int ticket){
-        for (int i=0; i<reservetions.size();i++){
-            if(reservetions.get(i).getIdreservetion()==id){
-               reservetions.get(i).setIdreservetion(ticket);
-            }
-        }
-    }
-    public ModelTicket gettipimprumut(int id){
-        for (ModelTicket m: reservetions){
-            if(m.getId()==id){
-                return m;
+            if(reservetions.get(i).getId()==id){
+                return reservetions.get(i);
             }
         }
         return null;
@@ -84,7 +73,7 @@ public class ControlReservetion {
 
     public void delete(int id){
         for (int i=0;i<reservetions.size(); i++){
-            if(reservetions.get(i).getIdreservetion()==id){
+            if(reservetions.get(i).getId()==id){
                 reservetions.remove(i);
             }
         }
@@ -94,17 +83,11 @@ public class ControlReservetion {
         if(this.reservetions.size()==0){
             return 1;
         }else{
-            return this.reservetions.get(this.reservetions.size()-1).getIdreservetion()+1;
+            return this.reservetions.get(this.reservetions.size()-1).getId()+1;
         }
     }
-    public boolean isNume(String nume){
-        for (int i=0; i<reservetions.size();i++){
-            if (reservetions.get(i).getNameDestination()==nume){
-                return true;
-            }
-        }
-        return false;
-    }
+
+
 
 
     public String toSave(){
@@ -125,14 +108,6 @@ public class ControlReservetion {
         catch (Exception e){
             e.printStackTrace();
         }
-    }
-    public ModelReservetion getbyid(int id){
-        for (int i=0; i<reservetions.size();i++){
-            if(reservetions.get(i).getIdreservetion()==id){
-                return reservetions.get(i);
-            }
-        }
-        return null;
     }
 
     public void clear(){

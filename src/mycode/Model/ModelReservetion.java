@@ -1,54 +1,53 @@
 package mycode.Model;
 
 public class ModelReservetion {
-    private int idreservetion;
-    private String nameDestination;
-    private int price;
-    private int quantity;
-    public ModelReservetion(int idreservetion, String nameDestination, int price, int quantity){
-        this.idreservetion=idreservetion;
-        this.nameDestination=nameDestination;
-        this.price=price;
-        this.quantity=quantity;
+    private int id;
+    private int ticket_id;
+    private  int idReservetion;
+    public ModelReservetion(int id, int ticket_id, int idReservetion){
+        this.id=id;
+        this.ticket_id=ticket_id;
+        this.idReservetion=idReservetion;
+
     }
     public ModelReservetion(String propietati){
         String[] line=propietati.split(",");
-        this.idreservetion=Integer.parseInt(line[0]);
-        this.nameDestination=line[1];
-        this.price=Integer.parseInt(line[2]);
-        this.quantity=Integer.parseInt(line[3]);
-    }
-    public String descrierezervare(){
-        String text="";
-        text+="Id-ul rezervari este " + this.idreservetion +"\n";
-        text+= "Numele destinatie este" + this.nameDestination+ "\n";
-        text+="Pretul este  este " + this.price +"\n";
-        text+="Cantitatea este" + this.quantity + "\n";
-        return text;
+        this.id=Integer.parseInt(line[0]);
+        this.ticket_id=Integer.parseInt(line[1]);
+        this.idReservetion=Integer.parseInt(line[2]);
     }
 
-    public int getIdreservetion(){
-        return this.idreservetion;
+    public String description(){
+        String text="";
+        text+="Id-ul este " + this.id +"\n";
+        text+="Id-ul ticketului este " + this.ticket_id+ "\n";
+        text+="Nr rezervari este " + this.idReservetion+"\n";
+        return text;
+
     }
-    public void setIdreservetion(int idreservetion){
-        this.idreservetion=idreservetion;
+    public int getId(){
+        return this.id;
     }
-    public String getNameDestination(){return  this.nameDestination;}
-    public void setNameDestination(String nameDestination){
-        this.nameDestination=nameDestination;
+    public void setId(int id){
+        this.id=id;
     }
-    public int getPrice(){
-        return this.price;}
-    public void setPrice(int price){
-        this.price=price;}
-    public int getQuantity(){return this.quantity;}
-    public void setQuantity(int quantity){
-        this.quantity=quantity;
+    public int getTicket_id(){
+        return this.ticket_id;
     }
+    public void setTicket_id(int ticket_id){
+        this.ticket_id=ticket_id;
+    }
+
+    public int getIdReservetion(){
+        return this.idReservetion;
+    }
+    public void setIdReservetion(int idReservetion){
+        this.idReservetion=idReservetion;
+    }
+
     public String save(){
         String text="";
-        text+=this.idreservetion+","+this.nameDestination+ "," +this.price+","+this.quantity;
+        text+=this.id+","+this.ticket_id+","+this.idReservetion;
         return text;
     }
 }
-
